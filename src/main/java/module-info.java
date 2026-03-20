@@ -23,13 +23,14 @@ module io.aiven.commons.kafka.config {
 	exports io.aiven.commons.kafka.config.fragment;
 	exports io.aiven.commons.kafka.config.validator;
 
-	requires io.aiven.commons.collections;
-	requires org.slf4j;
+	requires transitive io.aiven.commons.util;
+	uses org.slf4j.Logger;
+	uses org.slf4j.LoggerFactory;
 	requires kafka.clients;
 	requires connect.runtime;
 	requires org.apache.commons.lang3;
 	requires maven.artifact;
-	requires java.validation;
 	requires org.apache.commons.io;
+	requires org.slf4j;
 	requires velocity.tools.generic;
 }

@@ -17,7 +17,7 @@ package io.aiven.commons.kafka.config.validator;
 
         SPDX-License-Identifier: Apache-2
  */
-import io.aiven.commons.collections.Scale;
+import io.aiven.commons.util.collections.Scale;
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.common.config.ConfigException;
 

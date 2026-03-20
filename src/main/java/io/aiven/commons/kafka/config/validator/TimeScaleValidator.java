@@ -16,7 +16,7 @@
 
 package io.aiven.commons.kafka.config.validator;
 
-import io.aiven.commons.collections.TimeScale;
+import io.aiven.commons.util.collections.TimeScale;
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.common.config.ConfigException;
 

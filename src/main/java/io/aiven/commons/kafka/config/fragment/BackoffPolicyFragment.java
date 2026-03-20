@@ -16,7 +16,7 @@
 
 package io.aiven.commons.kafka.config.fragment;
 
-import io.aiven.commons.collections.TimeScale;
+import io.aiven.commons.util.collections.TimeScale;
 import io.aiven.commons.kafka.config.ExtendedConfigKey;
 import io.aiven.commons.kafka.config.SinceInfo;
 import io.aiven.commons.kafka.config.validator.PredicateGatedValidator;
