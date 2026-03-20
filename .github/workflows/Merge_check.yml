@@ -153,12 +153,12 @@ jobs:
           cache: 'maven'
 
       - name: Build site
-        run: mvn -e -B -V -ntp site site:stage
+        run: mvn -e -B -V -ntp site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./target/staging
+          path: ./target/site
 
   # Deployment site
   deploy:
