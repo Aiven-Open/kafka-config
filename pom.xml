@@ -32,6 +32,9 @@
 
   <properties>
     <maven.artifact.version>3.9.6</maven.artifact.version>
+    <jdk.version>17</jdk.version>
+    <maven.compiler.source>${jdk.version}</maven.compiler.source>
+    <maven.compiler.target>${jdk.version}</maven.compiler.target>
   </properties>
   <dependencyManagement>
     <dependencies>
