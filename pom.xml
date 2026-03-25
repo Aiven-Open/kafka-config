@@ -189,8 +189,6 @@
     </repository>
 
     <repository>
-      <id>central</id>
-      <url>https://central.sonatype.com/repository/maven</url>
       <releases>
         <enabled>true</enabled>
         <updatePolicy>always</updatePolicy>
@@ -199,11 +197,11 @@
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
+      <id>central</id>
+      <url>https://central.sonatype.com/repository/maven</url>
     </repository>
 
     <repository>
-      <id>central-snapshot</id>
-      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
       <releases>
         <enabled>false</enabled>
       </releases>
@@ -212,6 +210,8 @@
         <updatePolicy>always</updatePolicy>
         <checksumPolicy>fail</checksumPolicy>
       </snapshots>
+      <id>central-snapshot</id>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     </repository>
   </repositories>
 
