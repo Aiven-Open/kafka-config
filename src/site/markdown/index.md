@@ -18,6 +18,8 @@
 -->
 # Aiven Commons Kafka Config (kafka-config)
 
+[![Main push checks](https://github.com/Aiven-Open/kafka-config/actions/workflows/Merge_check.yml/badge.svg)](https://github.com/Aiven-Open/kafka-config/actions/workflows/Merge_check.yml)
+
 `kafka-config` is a collection of utilities to make configuring and documenting Kafka components easier.
 
 
