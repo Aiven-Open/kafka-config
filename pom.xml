@@ -118,35 +118,33 @@
     </dependency>
   </dependencies>
 
-  <!--  <repositories>-->
-  <!--    <repository>-->
-  <!--      <releases>-->
-  <!--        <enabled>true</enabled>-->
-  <!--        <updatePolicy>always</updatePolicy>-->
-  <!--        <checksumPolicy>fail</checksumPolicy>-->
-  <!--      </releases>-->
-  <!--      <snapshots>-->
-  <!--        <enabled>false</enabled>-->
-  <!--      </snapshots>-->
-  <!--      <id>central</id>-->
-  <!--      <url>https://central.sonatype.com/repository/maven</url>-->
-  <!--      <layout>default</layout>-->
-  <!--    </repository>-->
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://central.sonatype.com/repository/maven</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
 
-  <!--    <repository>-->
-  <!--      <releases>-->
-  <!--        <enabled>false</enabled>-->
-  <!--      </releases>-->
-  <!--      <snapshots>-->
-  <!--        <enabled>true</enabled>-->
-  <!--        <updatePolicy>always</updatePolicy>-->
-  <!--        <checksumPolicy>fail</checksumPolicy>-->
-  <!--      </snapshots>-->
-  <!--      <id>central-snapshot</id>-->
-  <!--      <url>https://central.sonatype.com/repository/maven-snapshots/</url>-->
-  <!--      <layout>default</layout>-->
-  <!--    </repository>-->
-  <!--  </repositories>-->
+    <repository>
+      <id>central-snapshot</id>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+    </repository>
+  </repositories>
 
   <build>
     <plugins>
