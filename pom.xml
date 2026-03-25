@@ -66,10 +66,10 @@
   </developers>
 
   <scm>
-    <connection>scm:git:git://github.com/Aiven-Open/common-util.git</connection>
-    <developerConnection>scm:git:git@github.com:Aiven-Open/common-util.git</developerConnection>
+    <connection>scm:git:git://github.com/Aiven-Open/kafka-config.git</connection>
+    <developerConnection>scm:git:git@github.com:Aiven-Open/kafka-config.git</developerConnection>
     <tag>HEAD</tag>
-    <url>https://github.com/Aiven-Open/common-util</url>
+    <url>https://github.com/Aiven-Open/kafka-config</url>
   </scm>
 
   <distributionManagement>
@@ -89,6 +89,7 @@
   <properties>
     <aiven.util.version>0.1.0-SNAPSHOT</aiven.util.version>
   </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
