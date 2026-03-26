@@ -16,61 +16,67 @@
 
 package io.aiven.commons.kafka.config.fragment;
 
-import io.aiven.commons.util.collections.TimeScale;
 import io.aiven.commons.kafka.config.ExtendedConfigKey;
 import io.aiven.commons.kafka.config.SinceInfo;
 import io.aiven.commons.kafka.config.validator.PredicateGatedValidator;
 import io.aiven.commons.kafka.config.validator.TimeScaleValidator;
+import io.aiven.commons.util.collections.TimeScale;
+import java.util.Objects;
 import org.apache.kafka.common.config.ConfigDef;
 
-import java.util.Objects;
-
-/**
- * Defines the backoff policy for connectors.
- */
+/** Defines the backoff policy for connectors. */
 public final class BackoffPolicyFragment extends ConfigFragment {
 
-	static final String GROUP_RETRY_BACKOFF_POLICY = "Retry backoff policy";
-	static final String KAFKA_RETRY_BACKOFF_MS_CONFIG = "kafka.retry.backoff.ms";
+  static final String GROUP_RETRY_BACKOFF_POLICY = "Retry backoff policy";
+  static final String KAFKA_RETRY_BACKOFF_MS_CONFIG = "kafka.retry.backoff.ms";
 
-	/**
-	 * Constructor.
-	 * 
-	 * @param dataAccess
-	 *            The data to access.
-	 */
-	public BackoffPolicyFragment(final FragmentDataAccess dataAccess) {
-		super(dataAccess);
-	}
+  /**
+   * Constructor.
+   *
+   * @param dataAccess The data to access.
+   */
+  public BackoffPolicyFragment(final FragmentDataAccess dataAccess) {
+    super(dataAccess);
+  }
 
-	/**
-	 * Adds configuration options to the configuration definition.
-	 *
-	 * @param configDef
-	 *            the configuration definition ot update.
-	 * @return the number of items in the backoff policy group.
-	 */
-	public static int update(final ConfigDef configDef) {
-		configDef.define(ExtendedConfigKey.builder(KAFKA_RETRY_BACKOFF_MS_CONFIG).type(ConfigDef.Type.LONG)
-				.validator(new PredicateGatedValidator(Objects::nonNull,
-						TimeScaleValidator.between(0, TimeScale.DAYS.asMilliseconds(1))))
-				.group(GROUP_RETRY_BACKOFF_POLICY).orderInGroup(1).width(ConfigDef.Width.NONE)
-				.documentation("The retry backoff in milliseconds. "
-						+ "This config is used to notify Kafka Connect to retry delivering a message batch or "
-						+ "performing recovery in case of transient exceptions. Maximum value is "
-						+ TimeScale.DAYS.displayValue(TimeScale.DAYS.asMilliseconds(1)))
-				.since(SinceInfo.builder().groupId("io.aiven.commons").artifactId("kafka-config").version("1.0.0")
-						.build())
-				.build());
-		return 1;
-	}
+  /**
+   * Adds configuration options to the configuration definition.
+   *
+   * @param configDef the configuration definition ot update.
+   * @return the number of items in the backoff policy group.
+   */
+  public static int update(final ConfigDef configDef) {
+    configDef.define(
+        ExtendedConfigKey.builder(KAFKA_RETRY_BACKOFF_MS_CONFIG)
+            .type(ConfigDef.Type.LONG)
+            .validator(
+                new PredicateGatedValidator(
+                    Objects::nonNull,
+                    TimeScaleValidator.between(0, TimeScale.DAYS.asMilliseconds(1))))
+            .group(GROUP_RETRY_BACKOFF_POLICY)
+            .orderInGroup(1)
+            .width(ConfigDef.Width.NONE)
+            .documentation(
+                "The retry backoff in milliseconds. "
+                    + "This config is used to notify Kafka Connect to retry delivering a message batch or "
+                    + "performing recovery in case of transient exceptions. Maximum value is "
+                    + TimeScale.DAYS.displayValue(TimeScale.DAYS.asMilliseconds(1)))
+            .since(
+                SinceInfo.builder()
+                    .groupId("io.aiven.commons")
+                    .artifactId("kafka-config")
+                    .version("1.0.0")
+                    .build())
+            .build());
+    return 1;
+  }
 
-	/**
-	 * Gets the kafka retry backoff time.
-	 *
-	 * @return the Kafka retry backoff time in MS.
-	 */
-	public Long getKafkaRetryBackoffMs() {
-		return getLong(KAFKA_RETRY_BACKOFF_MS_CONFIG);
-	}
+  /**
+   * Gets the kafka retry backoff time.
+   *
+   * @return the Kafka retry backoff time in MS.
+   */
+  public Long getKafkaRetryBackoffMs() {
+    return getLong(KAFKA_RETRY_BACKOFF_MS_CONFIG);
+  }
 }

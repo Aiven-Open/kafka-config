@@ -15,22 +15,22 @@
  *
  * SPDX-License-Identifier: Apache-2
  */
-/**
- * Kafka configuration utilities module def
- */
+/** Kafka configuration utilities module def */
 module io.aiven.commons.kafka.config {
-	exports io.aiven.commons.kafka.config;
-	exports io.aiven.commons.kafka.config.fragment;
-	exports io.aiven.commons.kafka.config.validator;
+  exports io.aiven.commons.kafka.config;
+  exports io.aiven.commons.kafka.config.fragment;
+  exports io.aiven.commons.kafka.config.validator;
 
-	requires transitive io.aiven.commons.util;
-	uses org.slf4j.Logger;
-	uses org.slf4j.LoggerFactory;
-	requires kafka.clients;
-	requires connect.runtime;
-	requires org.apache.commons.lang3;
-	requires maven.artifact;
-	requires org.apache.commons.io;
-	requires org.slf4j;
-	requires velocity.tools.generic;
+  requires transitive io.aiven.commons.util;
+
+  uses org.slf4j.Logger;
+  uses org.slf4j.LoggerFactory;
+
+  requires kafka.clients;
+  requires connect.runtime;
+  requires org.apache.commons.lang3;
+  requires maven.artifact;
+  requires org.apache.commons.io;
+  requires org.slf4j;
+  requires velocity.tools.generic;
 }
