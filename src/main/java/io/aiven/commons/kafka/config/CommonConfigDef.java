@@ -19,56 +19,48 @@ package io.aiven.commons.kafka.config;
 import io.aiven.commons.kafka.config.fragment.BackoffPolicyFragment;
 import io.aiven.commons.kafka.config.fragment.CommonConfigFragment;
 import io.aiven.commons.kafka.config.fragment.FragmentDataAccess;
-import org.apache.kafka.common.config.ConfigDef;
-import org.apache.kafka.common.config.ConfigValue;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.apache.kafka.common.config.ConfigDef;
+import org.apache.kafka.common.config.ConfigValue;
 
-/**
- * The ConfigDef for the CommonConfig class.
- */
+/** The ConfigDef for the CommonConfig class. */
 public class CommonConfigDef extends ConfigDef {
-	/**
-	 * Constructor .
-	 */
-	public CommonConfigDef() {
-		super();
-		BackoffPolicyFragment.update(this);
-		CommonConfigFragment.update(this);
-	}
+  /** Constructor . */
+  public CommonConfigDef() {
+    super();
+    BackoffPolicyFragment.update(this);
+    CommonConfigFragment.update(this);
+  }
 
-	/**
-	 * Gathers in depth, multi argument configuration issues. This method should be
-	 * overridden when the Fragments added to the config have validation rules that
-	 * required inspection of multiple properties.
-	 * <p>
-	 * Overriding methods should call the parent method to update the map and then
-	 * add error messages to the {@link ConfigValue} associated with property name
-	 * that is in error.
-	 * </p>
-	 *
-	 * @param valueMap
-	 *            the map of configuration names to values.
-	 * @return the updated map.
-	 */
-	protected Map<String, ConfigValue> multiValidate(final Map<String, ConfigValue> valueMap) {
-		new BackoffPolicyFragment(FragmentDataAccess.from(valueMap)).validate(valueMap);
-		return valueMap;
-	}
+  /**
+   * Gathers in depth, multi argument configuration issues. This method should be overridden when
+   * the Fragments added to the config have validation rules that required inspection of multiple
+   * properties.
+   *
+   * <p>Overriding methods should call the parent method to update the map and then add error
+   * messages to the {@link ConfigValue} associated with property name that is in error.
+   *
+   * @param valueMap the map of configuration names to values.
+   * @return the updated map.
+   */
+  protected Map<String, ConfigValue> multiValidate(final Map<String, ConfigValue> valueMap) {
+    new BackoffPolicyFragment(FragmentDataAccess.from(valueMap)).validate(valueMap);
+    return valueMap;
+  }
 
-	@SuppressWarnings("PMD.AvoidCatchingGenericException")
-	@Override
-	public final List<ConfigValue> validate(final Map<String, String> props) {
-		final Map<String, ConfigValue> valueMap = validateAll(props);
+  @SuppressWarnings("PMD.AvoidCatchingGenericException")
+  @Override
+  public final List<ConfigValue> validate(final Map<String, String> props) {
+    final Map<String, ConfigValue> valueMap = validateAll(props);
 
-		try {
-			return new ArrayList<>(multiValidate(valueMap).values());
-		} catch (RuntimeException e) {
-			// any exceptions thrown in the above block are accounted for in the
-			// super.validate(props) call.
-			return new ArrayList<>(valueMap.values());
-		}
-	}
+    try {
+      return new ArrayList<>(multiValidate(valueMap).values());
+    } catch (RuntimeException e) {
+      // any exceptions thrown in the above block are accounted for in the
+      // super.validate(props) call.
+      return new ArrayList<>(valueMap.values());
+    }
+  }
 }

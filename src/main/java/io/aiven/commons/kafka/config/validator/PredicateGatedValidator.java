@@ -16,42 +16,39 @@
 
 package io.aiven.commons.kafka.config.validator;
 
-import org.apache.kafka.common.config.ConfigDef;
-
 import java.util.Objects;
 import java.util.function.Predicate;
+import org.apache.kafka.common.config.ConfigDef;
 
 /**
- * A validator that is gated by a predicate. The predicate tests the value
- * object. If the predicate returns {@code true} then the associated validator
- * is executed. Othewise the validation passes.
+ * A validator that is gated by a predicate. The predicate tests the value object. If the predicate
+ * returns {@code true} then the associated validator is executed. Othewise the validation passes.
  */
 public class PredicateGatedValidator implements ConfigDef.Validator {
-	private final Predicate<Object> predicate;
-	private final ConfigDef.Validator validator;
+  private final Predicate<Object> predicate;
+  private final ConfigDef.Validator validator;
 
-	/**
-	 * Constructor.
-	 * 
-	 * @param predicate
-	 *            the predicate to gate access to the {@code validator}
-	 * @param validator
-	 *            the validator to execute if the predicate is {@code true}.
-	 */
-	public PredicateGatedValidator(final Predicate<Object> predicate, final ConfigDef.Validator validator) {
-		this.validator = Objects.requireNonNull(validator);
-		this.predicate = Objects.requireNonNull(predicate);
-	}
+  /**
+   * Constructor.
+   *
+   * @param predicate the predicate to gate access to the {@code validator}
+   * @param validator the validator to execute if the predicate is {@code true}.
+   */
+  public PredicateGatedValidator(
+      final Predicate<Object> predicate, final ConfigDef.Validator validator) {
+    this.validator = Objects.requireNonNull(validator);
+    this.predicate = Objects.requireNonNull(predicate);
+  }
 
-	@Override
-	public void ensureValid(final String name, final Object value) {
-		if (predicate.test(value)) {
-			validator.ensureValid(name, value);
-		}
-	}
+  @Override
+  public void ensureValid(final String name, final Object value) {
+    if (predicate.test(value)) {
+      validator.ensureValid(name, value);
+    }
+  }
 
-	@Override
-	public String toString() {
-		return validator.toString();
-	}
+  @Override
+  public String toString() {
+    return validator.toString();
+  }
 }
