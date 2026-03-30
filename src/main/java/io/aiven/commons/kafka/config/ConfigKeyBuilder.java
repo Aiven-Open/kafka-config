@@ -19,6 +19,8 @@
 
 package io.aiven.commons.kafka.config;
 
+import static org.apache.kafka.common.config.ConfigDef.NO_DEFAULT_VALUE;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -40,8 +42,8 @@ public class ConfigKeyBuilder<T extends ConfigKeyBuilder<?>> {
   /** The type of the key. Defaults to {@link ConfigDef.Type#STRING}. */
   protected ConfigDef.Type type = ConfigDef.Type.STRING;
 
-  /** The default value for the config key. Defaults to {@code null}. */
-  protected Object defaultValue = null;
+  /** The default value for the config key. Defaults to {@code NO_DEFAULT_VALUE}. */
+  protected Object defaultValue = NO_DEFAULT_VALUE;
 
   /** The validator (if any) for this key. May be {@code null}. */
   protected ConfigDef.Validator validator;
