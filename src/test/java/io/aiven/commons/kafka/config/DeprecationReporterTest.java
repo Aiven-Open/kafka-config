@@ -50,7 +50,6 @@ public class DeprecationReporterTest {
                   .build())
           .define(
               ExtendedConfigKey.builder("roads")
-                  .defaultValue("Made of asphalt")
                   .deprecatedInfo(
                       DeprecatedInfo.builder()
                           .description("Where we're going we don't need roads")
@@ -65,7 +64,6 @@ public class DeprecationReporterTest {
                   .build())
           .define(
               ExtendedConfigKey.builder("shangrila")
-                  .defaultValue("Not a cup")
                   .documentation("not deprecated no-default")
                   .build())
           .define(
