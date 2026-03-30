@@ -18,7 +18,6 @@ package io.aiven.commons.kafka.config;
 
        SPDX-License-Identifier: Apache-2
 */
-import static org.apache.kafka.common.config.ConfigDef.NO_DEFAULT_VALUE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
@@ -41,7 +40,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -60,7 +59,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -79,7 +78,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -98,7 +97,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -117,7 +116,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -136,7 +135,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
 
     key = new ConfigKeyBuilder<>(name).dependent("one").dependent("two").build();
@@ -151,7 +150,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
 
     key = new ConfigKeyBuilder<>(name).dependents(Arrays.asList("one", "two")).build();
@@ -166,7 +165,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -186,7 +185,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -205,7 +204,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
 
     key = new ConfigKeyBuilder<>(name).internalConfig(false).build();
@@ -220,7 +219,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -239,7 +238,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(5);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -271,7 +270,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isEqualTo(recommender);
     assertThat(key.type).isEqualTo(ConfigDef.Type.STRING);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
@@ -290,7 +289,7 @@ public class ConfigKeyBuilderTest {
     assertThat(key.orderInGroup).isEqualTo(-1);
     assertThat(key.recommender).isNull();
     assertThat(key.type).isEqualTo(ConfigDef.Type.BOOLEAN);
-    assertThat(key.defaultValue).isEqualTo(NO_DEFAULT_VALUE);
+    assertThat(key.defaultValue).isNull();
     assertThat(key.validator).isNull();
   }
 
