@@ -140,15 +140,12 @@ public class ConfigDefBean<T extends ConfigKeyBean> {
   }
 
   /**
-   * Gets the list of configuration options.
+   * Gets the list of configuration options. Filtered to remove any internal configuration
    *
-   * @return the list of configuration options.
+   * @return the list of configuration options that are not internal configuration options.
    */
   public List<T> configKeys() {
-    return configDef.configKeys().values().stream()
-        .map(constructor)
-        .sorted(Comparator.comparing(ConfigKeyBean::getName))
-        .collect(Collectors.toList());
+    return generatedFilteredList(c -> !c.internalConfig);
   }
 
   /**
