@@ -18,7 +18,7 @@
 
 # Workflow to check pull requests main branches
 # This checks the source in the state as if after the merge.
-name: Pull request checks
+name: Pull request pre-release checks
 on:
   workflow_dispatch:
   pull_request:
