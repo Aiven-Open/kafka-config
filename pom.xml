@@ -26,7 +26,7 @@
   </parent>
 
   <artifactId>kafka-config</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
   <name>Aiven configuration utilities for Apache Kafka</name>
   <description>Utilities to help manage Kafka configuration and configuration definitions</description>
 
@@ -87,7 +87,7 @@
   </distributionManagement>
 
   <properties>
-    <latestRelease>none</latestRelease>
+    <latestRelease>0.1.0</latestRelease>
     <aiven.util.version>0.1.0</aiven.util.version>
   </properties>
 
