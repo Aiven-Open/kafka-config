@@ -88,7 +88,7 @@
 
   <properties>
     <latestRelease>none</latestRelease>
-    <aiven.util.version>0.1.0-SNAPSHOT</aiven.util.version>
+    <aiven.util.version>0.1.0</aiven.util.version>
   </properties>
 
   <dependencyManagement>
