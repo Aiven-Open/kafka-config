@@ -98,5 +98,5 @@ jobs:
           delete-branch: true
           draft: true
           title: Release version ${{ github.event.inputs.release_version }}
-          body-path: /tmp/release_body.txt
+          body-path: /tmp/releaseg_body.txt
 

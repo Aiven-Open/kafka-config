@@ -60,3 +60,9 @@ git checkout -b changelog-${endVersion}
 git add CHANGE_LOG.md
 git commit -m "Changelog for ${startTag} to v${endVersion}"
 git push --set-upstream origin changelog-${endVersion}
+
+mvn -P pre-release-check verify
+if [[ $? -eq 1 ]]
+then
+  echo "Fix issues with the build and rerun 'mvn -P pre-release-check verify'"
+fi
