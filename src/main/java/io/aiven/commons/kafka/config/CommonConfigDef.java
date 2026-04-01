@@ -50,6 +50,18 @@ public class CommonConfigDef extends ConfigDef {
     return valueMap;
   }
 
+  /**
+   * Allows users to toggle certain config on and off in the documentation
+   *
+   * @param key The config key that you want to toggle hidden or unhidden in the documentation
+   * @param state true hides the key from documentation false shows the config in the documentation
+   */
+  protected void hide(String key, boolean state) {
+    ExtendedConfigKey newKey =
+        ExtendedConfigKey.Builder.unbuild(configKeys().get(key)).internalConfig(state).build();
+    configKeys().put(newKey.name, newKey);
+  }
+
   @SuppressWarnings("PMD.AvoidCatchingGenericException")
   @Override
   public final List<ConfigValue> validate(final Map<String, String> props) {
