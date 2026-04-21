@@ -18,6 +18,7 @@ package io.aiven.commons.kafka.config.fragment;
 
 import static org.apache.kafka.common.config.ConfigDef.Range.atLeast;
 
+import io.aiven.commons.kafka.config.ConverterType;
 import io.aiven.commons.kafka.config.ExtendedConfigKey;
 import io.aiven.commons.kafka.config.SinceInfo;
 import java.util.Map;
@@ -28,6 +29,9 @@ import org.apache.kafka.connect.runtime.ConnectorConfig;
 public class CommonConfigFragment extends ConfigFragment {
   /** The task id configuration option */
   private static final String TASK_ID = "task.id";
+
+  private static final String VALUE_CONVERTER = "value.converter";
+  private static final String KEY_CONVERTER = "key.converter";
 
   /**
    * Gets a setter for this fragment.
@@ -118,6 +122,24 @@ public class CommonConfigFragment extends ConfigFragment {
     return getInt(ConnectorConfig.TASKS_MAX_CONFIG);
   }
 
+  /**
+   * the converter used for the key portion of the kafka event
+   *
+   * @return the converter used for the key portion of the kafka event
+   */
+  public ConverterType getKeyConverter() {
+    return ConverterType.forName(getString(KEY_CONVERTER));
+  }
+
+  /**
+   * the converter used for the value portion of the kafka event
+   *
+   * @return the converter used for the value portion of the kafka event
+   */
+  public ConverterType getValueConverter() {
+    return ConverterType.forName(getString(VALUE_CONVERTER));
+  }
+
   /** Setter to programmatically set values in the configuraiotn. */
   public static class Setter extends AbstractFragmentSetter<Setter> {
     /**
@@ -147,6 +169,26 @@ public class CommonConfigFragment extends ConfigFragment {
      */
     public Setter maxTasks(final int maxTasks) {
       return setValue(ConnectorConfig.TASKS_MAX_CONFIG, maxTasks);
+    }
+
+    /**
+     * Set the key Converter
+     *
+     * @param keyConverter the converter to use to convert the key converter
+     * @return this
+     */
+    public Setter keyConverter(final String keyConverter) {
+      return setValue(KEY_CONVERTER, keyConverter);
+    }
+
+    /**
+     * Set the value converter
+     *
+     * @param valueConverter the converter to use to convert value data
+     * @return this
+     */
+    public Setter valueConverter(final String valueConverter) {
+      return setValue(VALUE_CONVERTER, valueConverter);
     }
   }
 }
