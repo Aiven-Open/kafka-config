@@ -92,6 +92,30 @@ public class CommonConfigFragment extends ConfigFragment {
                 .internalConfig(true)
                 .documentation("The task ID that this connector is working with.")
                 .since(siBuilder.version("1.0.0").build())
+                .build())
+        .define(
+            ExtendedConfigKey.builder(VALUE_CONVERTER)
+                .type(ConfigDef.Type.STRING)
+                .validator(new ConfigDef.NonEmptyStringWithoutControlChars())
+                .importance(ConfigDef.Importance.MEDIUM)
+                .group(commonGroup)
+                .orderInGroup(++orderInGroup)
+                .width(ConfigDef.Width.SHORT)
+                .internalConfig(true)
+                .documentation("The converter to use with the value.")
+                .since(siBuilder.version("1.0.0").build())
+                .build())
+        .define(
+            ExtendedConfigKey.builder(KEY_CONVERTER)
+                .type(ConfigDef.Type.STRING)
+                .validator(new ConfigDef.NonEmptyStringWithoutControlChars())
+                .importance(ConfigDef.Importance.MEDIUM)
+                .group(commonGroup)
+                .orderInGroup(++orderInGroup)
+                .width(ConfigDef.Width.SHORT)
+                .internalConfig(true)
+                .documentation("The converter to use with the key.")
+                .since(siBuilder.version("1.0.0").build())
                 .build());
   }
 
