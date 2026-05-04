@@ -84,6 +84,11 @@ public interface FragmentDataAccess {
       }
 
       @Override
+      public Class<?> getClass(final String key) {
+        return cfg.getClass(key);
+      }
+
+      @Override
       public <T> T getConfiguredInstance(final String key, final Class<? extends T> clazz) {
         return cfg.getConfiguredInstance(key, clazz);
       }
@@ -140,6 +145,11 @@ public interface FragmentDataAccess {
       @Override
       public Password getPassword(final String key) {
         return (Password) configValues.get(key).value();
+      }
+
+      @Override
+      public Class<?> getClass(final String key) {
+        return (Class<?>) configValues.get(key).value();
       }
 
       @Override
@@ -236,6 +246,14 @@ public interface FragmentDataAccess {
    * @return the password associated with the key.
    */
   Password getPassword(String key);
+
+  /**
+   * 1 Get the class associated with the key
+   *
+   * @param key the key to look up
+   * @return the class associated with the key
+   */
+  Class<?> getClass(String key);
 
   /**
    * Creates a configured instance of the class specified by the key. The value of the key may be

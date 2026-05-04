@@ -52,8 +52,7 @@ public class CommonConfigFragment extends ConfigFragment {
   @SuppressWarnings("PMD.AvoidUsingHardCodedIP")
   public static ConfigDef update(final ConfigDef configDef) {
     int orderInGroup = 0;
-    final String commonGroup = "common";
-
+    final String commonGroup = "Common";
     SinceInfo tasksMaxSince =
         SinceInfo.builder()
             .groupId("org.apache.kafka")
@@ -67,56 +66,25 @@ public class CommonConfigFragment extends ConfigFragment {
     SinceInfo.Builder siBuilder =
         SinceInfo.builder().groupId("io.aiven.commons").artifactId("kafka-config").version("1.0.0");
 
-    return configDef
-        .define(
-            ExtendedConfigKey.builder(ConnectorConfig.TASKS_MAX_CONFIG)
-                .type(ConfigDef.Type.INT)
-                .defaultValue(1)
-                .validator(atLeast(1))
-                .importance(ConfigDef.Importance.HIGH)
-                .group(commonGroup)
-                .orderInGroup(++orderInGroup)
-                .width(ConfigDef.Width.SHORT)
-                .documentation("Maximum number of tasks to use for this connector.")
-                .since(tasksMaxSince)
-                .build())
-        .define(
-            ExtendedConfigKey.builder(TASK_ID)
-                .type(ConfigDef.Type.INT)
-                .defaultValue(1)
-                .validator(atLeast(0))
-                .importance(ConfigDef.Importance.HIGH)
-                .group(commonGroup)
-                .orderInGroup(++orderInGroup)
-                .width(ConfigDef.Width.SHORT)
-                .internalConfig(true)
-                .documentation("The task ID that this connector is working with.")
-                .since(siBuilder.version("1.0.0").build())
-                .build())
-        .define(
-            ExtendedConfigKey.builder(VALUE_CONVERTER)
-                .type(ConfigDef.Type.STRING)
-                .validator(new ConfigDef.NonEmptyStringWithoutControlChars())
-                .importance(ConfigDef.Importance.MEDIUM)
-                .group(commonGroup)
-                .orderInGroup(++orderInGroup)
-                .width(ConfigDef.Width.SHORT)
-                .internalConfig(true)
-                .documentation("The converter to use with the value.")
-                .since(siBuilder.version("1.0.0").build())
-                .build())
-        .define(
-            ExtendedConfigKey.builder(KEY_CONVERTER)
-                .type(ConfigDef.Type.STRING)
-                .validator(new ConfigDef.NonEmptyStringWithoutControlChars())
-                .importance(ConfigDef.Importance.MEDIUM)
-                .group(commonGroup)
-                .orderInGroup(++orderInGroup)
-                .width(ConfigDef.Width.SHORT)
-                .internalConfig(true)
-                .documentation("The converter to use with the key.")
-                .since(siBuilder.version("1.0.0").build())
-                .build());
+    for (var configKey : ConnectorConfig.configDef().configKeys().values()) {
+      if (configKey.hasDefault() && !configDef.configKeys().containsValue(configKey)) {
+        configDef.define(ExtendedConfigKey.create(configKey));
+      }
+    }
+
+    return configDef.define(
+        ExtendedConfigKey.builder(TASK_ID)
+            .type(ConfigDef.Type.INT)
+            .defaultValue(1)
+            .validator(atLeast(0))
+            .importance(ConfigDef.Importance.HIGH)
+            .group(commonGroup)
+            .orderInGroup(++orderInGroup)
+            .width(ConfigDef.Width.SHORT)
+            .internalConfig(true)
+            .documentation("The task ID that this connector is working with.")
+            .since(siBuilder.version("1.0.0").build())
+            .build());
   }
 
   /**
@@ -152,7 +120,7 @@ public class CommonConfigFragment extends ConfigFragment {
    * @return the converter used for the key portion of the kafka event
    */
   public ConverterType getKeyConverter() {
-    return ConverterType.forName(getString(KEY_CONVERTER));
+    return ConverterType.forClassName(getClass(ConnectorConfig.KEY_CONVERTER_CLASS_CONFIG));
   }
 
   /**
@@ -161,7 +129,7 @@ public class CommonConfigFragment extends ConfigFragment {
    * @return the converter used for the value portion of the kafka event
    */
   public ConverterType getValueConverter() {
-    return ConverterType.forName(getString(VALUE_CONVERTER));
+    return ConverterType.forClassName(getClass(ConnectorConfig.VALUE_CONVERTER_CLASS_CONFIG));
   }
 
   /** Setter to programmatically set values in the configuraiotn. */

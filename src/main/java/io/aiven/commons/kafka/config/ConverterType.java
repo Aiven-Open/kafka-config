@@ -30,10 +30,10 @@ public enum ConverterType {
   /** AvroConverter */
   AVRO("io.confluent.connect.avro.AvroConverter");
 
-  private final String name;
+  private final String className;
 
-  ConverterType(final String name) {
-    this.name = name;
+  ConverterType(final String className) {
+    this.className = className;
   }
 
   /**
@@ -42,10 +42,10 @@ public enum ConverterType {
    * @param name is the full name including package of the converter
    * @return An enum instance of ConverterType
    */
-  public static ConverterType forName(final String name) {
+  public static ConverterType forClassName(final Class<?> name) {
     Objects.requireNonNull(name, "name cannot be null");
     for (final ConverterType converterType : values()) {
-      if (converterType.name.equalsIgnoreCase(name)) {
+      if (converterType.className.equalsIgnoreCase(name.getName())) {
         return converterType;
       }
     }

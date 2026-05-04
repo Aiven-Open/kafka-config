@@ -181,6 +181,11 @@ public class ConfigFragment implements FragmentDataAccess {
   }
 
   @Override
+  public Class<?> getClass(String key) {
+    return (Class<?>) dataAccess.getClass(key);
+  }
+
+  @Override
   public <T> T getConfiguredInstance(final String key, final Class<? extends T> clazz) {
     return dataAccess.getConfiguredInstance(key, clazz);
   }
