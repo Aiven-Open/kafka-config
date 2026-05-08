@@ -30,9 +30,6 @@ public class CommonConfigFragment extends ConfigFragment {
   /** The task id configuration option */
   private static final String TASK_ID = "task.id";
 
-  private static final String VALUE_CONVERTER = "value.converter";
-  private static final String KEY_CONVERTER = "key.converter";
-
   /**
    * Gets a setter for this fragment.
    *
@@ -170,7 +167,7 @@ public class CommonConfigFragment extends ConfigFragment {
      * @return this
      */
     public Setter keyConverter(final String keyConverter) {
-      return setValue(KEY_CONVERTER, keyConverter);
+      return setValue(ConnectorConfig.KEY_CONVERTER_CLASS_CONFIG, keyConverter);
     }
 
     /**
@@ -180,7 +177,7 @@ public class CommonConfigFragment extends ConfigFragment {
      * @return this
      */
     public Setter valueConverter(final String valueConverter) {
-      return setValue(VALUE_CONVERTER, valueConverter);
+      return setValue(ConnectorConfig.VALUE_CONVERTER_CLASS_CONFIG, valueConverter);
     }
   }
 }
