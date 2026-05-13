@@ -139,6 +139,24 @@ public class CommonConfig extends AbstractConfig {
     return commonConfigFragment.getTaskId();
   }
 
+  /**
+   * Value Converter
+   *
+   * @return value converter
+   */
+  public ConverterType getValueConverter() {
+    return commonConfigFragment.getValueConverter();
+  }
+
+  /**
+   * Key Converter
+   *
+   * @return the key converter
+   */
+  public ConverterType getKeyConverter() {
+    return commonConfigFragment.getKeyConverter();
+  }
+
   /** A map of values that allows overrides. */
   public static class ChangeTrackingMap {
     private final Map<String, Object> baseMap;
