@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.apache.kafka.common.config.ConfigDef;
+import org.apache.kafka.common.config.ConfigException;
 import org.apache.kafka.common.config.ConfigValue;
 
 /** The ConfigDef for the CommonConfig class. */
@@ -74,5 +75,20 @@ public class CommonConfigDef extends ConfigDef {
       // super.validate(props) call.
       return new ArrayList<>(valueMap.values());
     }
+  }
+
+  /**
+   * Copies a key from the specified ConfigDef to this ConfigDef.
+   *
+   * @param configDef the ConfigDef to copy the key from.
+   * @param keyName the name of the key to copy.
+   */
+  public void addKey(ConfigDef configDef, String keyName) {
+    ConfigDef.ConfigKey key = configDef.configKeys().get(keyName);
+    if (key == null) {
+      throw new ConfigException(
+          "Can not find key %s in %s", keyName, configDef.getClass().getName());
+    }
+    configKeys().put(key.name, key);
   }
 }
