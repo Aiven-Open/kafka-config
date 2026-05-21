@@ -22,7 +22,7 @@
   <parent>
     <groupId>io.aiven.commons</groupId>
     <artifactId>aiven-commons</artifactId>
-    <version>4-SNAPSHOT</version>
+    <version>4</version>
   </parent>
 
   <artifactId>kafka-config</artifactId>
@@ -87,8 +87,9 @@
   </distributionManagement>
 
   <properties>
-    <latestRelease>0.1.0</latestRelease>
+    <!-- config properties (please keep in alphabetical order) -->
     <aiven.util.version>0.2.0-SNAPSHOT</aiven.util.version>
+    <latestRelease>0.1.0</latestRelease>
   </properties>
 
   <dependencyManagement>
@@ -108,7 +109,15 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <dependencies>
+    <!-- please keep in alphabetical order groupId:artifactId -->
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons.io.version}</version>
+    </dependency>
     <dependency>
       <groupId>com.google.http-client</groupId>
       <artifactId>google-http-client</artifactId>
@@ -119,20 +128,23 @@
       <artifactId>google-http-client-gson</artifactId>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>io.aiven.commons</groupId>
       <artifactId>common-util</artifactId>
       <version>${aiven.util.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>${commons.collection4.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
       <version>${commons.text.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-artifact</artifactId>
-      <version>${maven.artifact.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.kafka</groupId>
@@ -147,9 +159,9 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>${commons.io.version}</version>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <version>${maven.artifact.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.velocity.tools</groupId>
@@ -166,12 +178,6 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
       <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-collections4</artifactId>
-      <version>${commons.collection4.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
