@@ -88,8 +88,9 @@
 
   <properties>
     <!-- config properties (please keep in alphabetical order) -->
-    <aiven.util.version>0.2.0-SNAPSHOT</aiven.util.version>
+    <aiven.util.version>0.2.0</aiven.util.version>
     <latestRelease>0.1.0</latestRelease>
+    <plugin.enforcer>3.6.2</plugin.enforcer>
   </properties>
 
   <dependencyManagement>
@@ -226,6 +227,35 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-markdown-resources</id>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <phase>pre-site</phase>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>.</directory>
+                  <includes>
+                    <include>*.md</include>
+                  </includes>
+                  <excludes>
+                    <exclude>README.md</exclude>
+                    <exclude>CONTRIBUTING.md</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+              <outputDirectory>${project.build.directory}/generated-site/markdown</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <archive>
@@ -280,8 +310,26 @@
           </dependency>
         </dependencies>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <failOnWarnings>true</failOnWarnings>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+
   <profiles>
     <profile>
       <id>publish</id>
@@ -290,7 +338,7 @@
           <plugin>
             <groupId>org.sonatype.central</groupId>
             <artifactId>central-publishing-maven-plugin</artifactId>
-            <version>0.10.0</version>
+            <version>${plugin-sonatype}</version>
             <extensions>true</extensions>
             <configuration>
               <publishingServerId>central</publishingServerId>
@@ -300,7 +348,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
-            <version>3.6.2</version>
+            <version>${plugin.enforcer}</version>
             <executions>
               <execution>
                 <id>enforce-versions</id>
@@ -331,7 +379,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
-            <version>3.6.2</version>
+            <version>${plugin.enforcer}</version>
             <executions>
               <execution>
                 <id>enforce-versions</id>
