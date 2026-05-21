@@ -23,12 +23,30 @@
       name="Aiven Common Utilities">
 
 
+    <bannerLeft name="Aiven Kafka Configuration Utilities" href="https://aiven-open.github.io/kafka-testkit" >
+        <image src="https://aiven.io/assets/img/aiven-logo.png"/>
+    </bannerLeft>
+
     <poweredBy>
         <logo name="Aiven" href="https://aiven.io/">
-            <image src="https://aiven.io/remix-assets/logo-aiven-DLhBz3IO.svg"/>
+            <image src="https://aiven.io/assets/img/aiven-logo.png"/>
         </logo>
     </poweredBy>
+
     <body>
+        <head>
+            <![CDATA[
+                <link rel="icon" type="image/x-icon" href="https://aiven.io/favicon.ico">
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.querySelectorAll('a.builtBy').forEach(function (link) {
+                            link.target = '_blank';
+                            link.rel = 'noopener noreferrer';
+                        });
+                    });
+                </script>
+            ]]>
+        </head>
 
         <menu name="Overview">
             <item name="Introduction" href="/index.html"/>
@@ -38,6 +56,12 @@
             <item name="Example CommonConfigDef documentation" href="./CommonConfigDef.html"/>
         </menu>
 
+        <menu name="Getting Involved" inherit="bottom" inheritAsRef="true">
+            <item name="Code of Conduct" href="./CODE_OF_CONDUCT.html" />
+            <item name="Contributing" href="./contributing.html" />
+            <item name="Security Policy" href="./SECURITY.html" />
+        </menu>
+
         <menu ref="reports"/>
 
 
@@ -45,9 +69,10 @@
             <item name="Apache Kafka" href="http://kafka.apache.org"/>
         </links>
 
-        <footer>Copyright &amp;copy Aiven Oy. Licensed under the Apache License, Version 2.0.
-            Apache Commons Collection, Apache Kafka, and Apache Velocity are trademarks of The Apache Software Foundation.
-            All other marks mentioned may be trademarks or registered trademarks of their respective owners.</footer>
+        <footer>Copyright &amp;copy Aiven Oy. Licensed under the Apache License, Version 2.0.<![CDATA[<br/>
+            Apache Commons Collection, Apache Kafka, and Apache Velocity are trademarks of The Apache Software Foundation.<br/>
+            All other marks mentioned may be trademarks or registered trademarks of their respective owners.]]>
+        </footer>
     </body>
     <skin>
         <groupId>org.apache.maven.skins</groupId>
@@ -60,7 +85,7 @@
             <sideBarEnabled>true</sideBarEnabled>
             <skipGenerationDate>true</skipGenerationDate>
             <gitHub>
-                <projectId>aiven-open/aiven-commons</projectId>
+                <projectId>aiven-open/kafka-config</projectId>
                 <ribbonOrientation>right</ribbonOrientation>
                 <ribbonColor>orange</ribbonColor>
             </gitHub>
