@@ -23,7 +23,7 @@
       name="Aiven Common Utilities">
 
 
-    <bannerLeft name="Aiven Kafka Configuration Utilities" href="https://aiven-open.github.io/kafka-testkit" >
+    <bannerLeft name="Aiven Kafka Configuration Utilities" href="https://aiven-open.github.io/kafka-config" >
         <image src="https://aiven.io/assets/img/aiven-logo.png"/>
     </bannerLeft>
 
