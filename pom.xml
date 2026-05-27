@@ -29,7 +29,7 @@
   <version>0.2.0-SNAPSHOT</version>
   <name>Aiven configuration utilities for Apache Kafka</name>
   <description>Utilities to help manage Kafka configuration and configuration definitions</description>
-  <url>https://aiven-open.github.io/kafka-config</url>q
+  <url>https://aiven-open.github.io/kafka-config</url>
   <inceptionYear>2026</inceptionYear>
 
   <organization>
