@@ -58,7 +58,7 @@ To setup a local development environment clone the GitHub repository and execute
 
 ```
 git clone ${project.url}.git
-cd kafka-testkit
+cd kafka-config
 mvn install
 ```
 
