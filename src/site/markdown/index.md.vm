@@ -36,7 +36,7 @@ Build
 ----------
 
 The latest release is ${project.properties.latestRelease} and is available for download from the Maven repository or via the [releases](${project.scm.url}/releases) page.
-Please note that all jars are provided for your convenience, the project delivery is the source code found in the [project git repository](${project.url}).  The tar and zip packages contain the release jar as well as all dependencies except those that are provided by the Kafka infrastructure.
+Please note that all jars are provided for your convenience, the project delivery is the source code found in the [project git repository](${project.scm.url}).  The tar and zip packages contain the release jar as well as all dependencies except those that are provided by the Kafka infrastructure.
 
 To build the module execute `mvn install`.  This will create the jars and install them in your local maven repository where they can be accessed from other projects.
 
@@ -50,5 +50,5 @@ Please note that the project explicitly does not require a CLA (Contributor Lice
 Contact
 -------
 
-Bug reports and patches are very welcome, please post them as GitHub issues and pull requests at https://github.com/aiven-open/kafka-config .
+Bug reports and patches are very welcome, please post them as GitHub issues and pull requests at ${project.scm.url}.
 To report any possible vulnerabilities or other serious issues please see our [security policy](SECURITY.html).
