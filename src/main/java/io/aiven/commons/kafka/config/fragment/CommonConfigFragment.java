@@ -63,25 +63,23 @@ public class CommonConfigFragment extends ConfigFragment {
     SinceInfo.Builder siBuilder =
         SinceInfo.builder().groupId("io.aiven.commons").artifactId("kafka-config").version("1.0.0");
 
-    for (var configKey : ConnectorConfig.configDef().configKeys().values()) {
-      if (configKey.hasDefault() && !configDef.configKeys().containsValue(configKey)) {
-        configDef.define(ExtendedConfigKey.create(configKey));
-      }
-    }
-
-    return configDef.define(
-        ExtendedConfigKey.builder(TASK_ID)
-            .type(ConfigDef.Type.INT)
-            .defaultValue(1)
-            .validator(atLeast(0))
-            .importance(ConfigDef.Importance.HIGH)
-            .group(commonGroup)
-            .orderInGroup(++orderInGroup)
-            .width(ConfigDef.Width.SHORT)
-            .internalConfig(true)
-            .documentation("The task ID that this connector is working with.")
-            .since(siBuilder.version("1.0.0").build())
-            .build());
+    Map<String, ConfigDef.ConfigKey> connectorConfig = ConnectorConfig.configDef().configKeys();
+    return configDef
+        .define(connectorConfig.get(ConnectorConfig.TASKS_MAX_CONFIG))
+        .define(
+            ExtendedConfigKey.builder(TASK_ID)
+                .type(ConfigDef.Type.INT)
+                .defaultValue(1)
+                .validator(atLeast(0))
+                .importance(ConfigDef.Importance.HIGH)
+                .group(commonGroup)
+                .orderInGroup(++orderInGroup)
+                .width(ConfigDef.Width.SHORT)
+                .internalConfig(true)
+                .documentation("The task ID that this connector is working with.")
+                .since(siBuilder.version("1.0.0").build())
+                .build())
+        .define(connectorConfig.get(ConnectorConfig.ERRORS_TOLERANCE_CONFIG));
   }
 
   /**

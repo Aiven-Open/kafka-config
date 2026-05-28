@@ -21,12 +21,12 @@
 git fetch origin
 if [ -z $2 ]
 then
-  echo "Must provide start tag and final version"
+  echo "Must provide source and final version without 'v' prefix"
   exit 1
 fi
 
-startTag=${1}
-endVersion=${2}
+startTag=v${1}
+endTag=v${2}
 
 start=`git rev-parse ${startTag}`;
 if [ ${start} == ${startTag} ]
@@ -37,7 +37,7 @@ fi
 
 end=`git rev-parse HEAD`;
 commits=${start}...${end};
-echo '## v'${endVersion} > /tmp/proposed_changelog.txt;
+echo '## '${endTag} > /tmp/proposed_changelog.txt;
 echo '### What is changed' >> /tmp/proposed_changelog.txt;
 echo ' ' >> /tmp/proposed_changelog.txt;
 git log --format=' - %s'  ${commits} >> /tmp/proposed_changelog.txt;
@@ -49,20 +49,16 @@ git log --format=' - %an'  ${commits} | sort -u  >> /tmp/proposed_changelog.txt;
 echo ' ' >> /tmp/proposed_changelog.txt;
 echo ' ' >> /tmp/proposed_changelog.txt;
 echo '### Full Changelog' >> /tmp/proposed_changelog.txt;
-echo 'https://github.com/Aiven-Open/aiven-commons/compare/'${startTag}'...v'${endVersion}  >> /tmp/proposed_changelog.txt;
+echo 'https://github.com/Aiven-Open/kafka-config/compare/'${startTag}'...'${endTag}  >> /tmp/proposed_changelog.txt;
 echo ' ' >> /tmp/proposed_changelog.txt
 touch CHANGE_LOG.md
-cat /tmp/proposed_changelog.txt CHANGE_LOG.md >> /tmp/CHANGE_LOG.md
+cat /tmp/proposed_changelog.txt CHANGE_LOG.md > /tmp/CHANGE_LOG.md
 mv /tmp/CHANGE_LOG.md CHANGE_LOG.md
 
-git checkout -b changelog-${endVersion}
+git checkout -b changelog-${endTag}
 
 git add CHANGE_LOG.md
-git commit -m "Changelog for ${startTag} to v${endVersion}"
-git push --set-upstream origin changelog-${endVersion}
+git commit -m "Update CHANGE_LOG.md for ${startTag} to ${endTag}"
+git push --set-upstream origin changelog-${endTag}
 
-mvn -P pre-release-check verify
-if [[ $? -eq 1 ]]
-then
-  echo "Fix issues with the build and rerun 'mvn -P pre-release-check verify'"
-fi
+echo "Run 'mvn -P pre-release-check verify site' and fix any issues before attempting a release."
