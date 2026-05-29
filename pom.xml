@@ -26,7 +26,7 @@
   </parent>
 
   <artifactId>kafka-config</artifactId>
-  <version>0.2.0-SNAPSHOT</version>
+  <version>0.2.0</version>
   <name>Aiven configuration utilities for Apache Kafka</name>
   <description>Utilities to help manage Kafka configuration and configuration definitions</description>
   <url>https://aiven-open.github.io/kafka-config</url>
@@ -89,7 +89,7 @@
   <properties>
     <!-- config properties (please keep in alphabetical order) -->
     <aiven.util.version>0.2.0</aiven.util.version>
-    <latestRelease>0.1.0</latestRelease>
+    <latestRelease>0.2.0</latestRelease>
     <plugin.enforcer>3.6.2</plugin.enforcer>
   </properties>
 
