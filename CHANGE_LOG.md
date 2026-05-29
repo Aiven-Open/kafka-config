@@ -1,6 +1,7 @@
 ## v0.2.0
 ### What is changed
  
+ - Fix ExtendedConfigKeyBean throws an exception if since is not set (#23)
  - Changes in support of the Aiven kafka framework (#17)
  - Add converter type definitions (#12)
  - Bump org.apache.maven.doxia:doxia-module-markdown from 2.0.0 to 2.1.0

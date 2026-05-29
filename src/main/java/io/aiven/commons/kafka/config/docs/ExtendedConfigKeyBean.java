@@ -66,7 +66,7 @@ public class ExtendedConfigKeyBean extends ConfigKeyBean {
    * @return the since value or {@code null} if not an extended key.
    */
   public final String since() {
-    return extendedFlag ? asExtended().since.toString() : null;
+    return extendedFlag ? asExtended().getSince() : null;
   }
 
   /**
