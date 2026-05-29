@@ -3,21 +3,14 @@
  
  - Changes in support of the Aiven kafka framework (#17)
  - Add converter type definitions (#12)
- - Merge pull request #10 from Aiven-Open/dependabot/maven/org.apache.maven.doxia-doxia-module-markdown-2.1.0
- - Merge pull request #9 from Aiven-Open/dependabot/maven/org.sonatype.central-central-publishing-maven-plugin-0.10.0
  - Bump org.apache.maven.doxia:doxia-module-markdown from 2.0.0 to 2.1.0
  - Bump org.sonatype.central:central-publishing-maven-plugin
- - Create dependabot.yml
- - Merge pull request #8 from Aiven-Open/release-0.1.0
- - Bump version to 0.2.0-SNAPSHOT
  
  
 ### Co-authored by
  
  - Aindriú Lavelle
  - Claude Warren
- - dependabot[bot]
- - github-actions[bot]
  
  
 ### Full Changelog
