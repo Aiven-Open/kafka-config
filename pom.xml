@@ -90,7 +90,7 @@
     <!-- config properties (please keep in alphabetical order) -->
     <aiven.util.version>0.2.0</aiven.util.version>
     <latestRelease>0.2.0</latestRelease>
-    <plugin.enforcer>3.6.2</plugin.enforcer>
+    <plugin.enforcer>3.6.3</plugin.enforcer>
   </properties>
 
   <dependencyManagement>
