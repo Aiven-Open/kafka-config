@@ -116,7 +116,6 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <!--      <version>${commons.io.version}</version>-->
     </dependency>
     <dependency>
       <groupId>com.google.http-client</groupId>
@@ -138,13 +137,11 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-collections4</artifactId>
-      <!--      <version>${commons.collection4.version}</version>-->
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
-      <!--      <version>${commons.text.version}</version>-->
     </dependency>
     <dependency>
       <groupId>org.apache.kafka</groupId>
@@ -161,12 +158,10 @@
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-artifact</artifactId>
-      <!--      <version>${maven.artifact.version}</version>-->
     </dependency>
     <dependency>
       <groupId>org.apache.velocity.tools</groupId>
       <artifactId>velocity-tools-generic</artifactId>
-      <!--      <version>${velocity.tools.version}</version>-->
     </dependency>
     <dependency>
       <groupId>org.assertj</groupId>
@@ -177,7 +172,6 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
-      <!--      <version>${junit.version}</version>-->
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -337,7 +331,6 @@
           <plugin>
             <groupId>org.sonatype.central</groupId>
             <artifactId>central-publishing-maven-plugin</artifactId>
-            <!--            <version>${plugin.sonatype}</version>-->
             <extensions>true</extensions>
             <configuration>
               <publishingServerId>central</publishingServerId>
@@ -347,7 +340,6 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
-            <!--            <version>${plugin.enforcer}</version>-->
             <executions>
               <execution>
                 <id>enforce-versions</id>
@@ -378,7 +370,6 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
-            <!--            <version>${plugin.enforcer}</version>-->
             <executions>
               <execution>
                 <id>enforce-versions</id>
