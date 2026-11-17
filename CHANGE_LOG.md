@@ -1,3 +1,27 @@
+## v0.3.0
+### What is changed
+ 
+ - Merge pull request #26 from Aiven-Open/adapt-to-updated-modules
+ - removed commented out version tags
+ - removed unnecessary version tags
+ - Merge pull request #19 from Aiven-Open/dependabot/maven/io.aiven.commons-aiven-commons-4
+ - Bump org.apache.maven.plugins:maven-enforcer-plugin from 3.6.2 to 3.6.3 (#16)
+ - Merge pull request #24 from Aiven-Open/release-0.2.0
+ - Bump version to 0.3.0-SNAPSHOT
+ - Bump io.aiven.commons:aiven-commons from 3 to 4
+ 
+ 
+### Co-authored by
+ 
+ - Aindriú Lavelle
+ - Claude Warren
+ - dependabot[bot]
+ - github-actions[bot]
+ 
+ 
+### Full Changelog
+https://github.com/Aiven-Open/kafka-config/compare/v0.2.0...v0.3.0
+ 
 ## v0.2.0
 ### What is changed
  
