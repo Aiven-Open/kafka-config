@@ -19,6 +19,8 @@
  - Bump plugin.surefire from 3.5.5 to 3.5.6
  - Bump org.apache.maven.plugins:maven-enforcer-plugin from 3.6.2 to 3.6.3
  - replace java 'adopt' with java 'temurin'
+ - Bump org.apache.maven.doxia:doxia-site-renderer from 2.0.0 to 2.1.0
+
  
 ### Co-authored by
  
