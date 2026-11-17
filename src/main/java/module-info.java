@@ -29,7 +29,7 @@ module io.aiven.commons.kafka.config {
   requires kafka.clients;
   requires connect.runtime;
   requires org.apache.commons.lang3;
-  requires maven.artifact;
+  requires org.apache.maven.v3.artifact;
   requires org.apache.commons.io;
   requires org.slf4j;
   requires velocity.tools.generic;
